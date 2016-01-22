@@ -303,6 +303,14 @@ class PsDashRunner(object):
         else:
             return self._run_web()
 
+    def run_wsgi(self):
+        logger.info('Starting psdash v%s via wsgi' % __version__)
+
+        self._setup_locale()
+        self._setup_workers()
+
+        return self.app
+
 
 def main():
     r = PsDashRunner.create_from_cli_args()
